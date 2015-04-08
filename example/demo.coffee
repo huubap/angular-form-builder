@@ -74,6 +74,15 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
     # ----------------------------------------
     # builder
     # ----------------------------------------
+    select = $builder.addFormObject 'default',
+      id: 'select'
+      component: 'select'
+      label: 'Name'
+      description: 'Your name'
+      placeholder: 'Your name'
+      required: yes
+      editable: yes
+      options: [{id: 0, value: 'value one'}, {id: 1, value: 'value two'}]
     textbox = $builder.addFormObject 'default',
         id: 'textbox'
         component: 'textInput'

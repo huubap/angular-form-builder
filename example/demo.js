@@ -36,7 +36,25 @@
     }
   ]).controller('DemoController', [
     '$scope', '$builder', '$validator', function($scope, $builder, $validator) {
-      var checkbox, textbox;
+      var checkbox, select, textbox;
+      select = $builder.addFormObject('default', {
+        id: 'select',
+        component: 'select',
+        label: 'Name',
+        description: 'Your name',
+        placeholder: 'Your name',
+        required: true,
+        editable: true,
+        options: [
+          {
+            id: 0,
+            value: 'value one'
+          }, {
+            id: 1,
+            value: 'value two'
+          }
+        ]
+      });
       textbox = $builder.addFormObject('default', {
         id: 'textbox',
         component: 'textInput',
