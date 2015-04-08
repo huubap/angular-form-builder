@@ -48,12 +48,29 @@ module.exports = (grunt) ->
                     hostname: '*'
                     port: 8000
                     base: '.'
-
+            test:
+                options:
+                    port: 9000
+                    base: '.'
+                    hostname: '*'
+                    protocolo: 'http'
         karma:
             min:
                 configFile: 'test/karma-min.config.coffee'
             source:
                 configFile: 'test/karma.config.coffee'
+
+        protractor:
+            options:
+                configFile: 'test/protractor-conf.coffee'
+                noColor: false
+                args: {}
+            e2e:
+                options:
+                    keepAlive: false
+            continuous:
+                options:
+                    keepAlive: false
 
     # -----------------------------------
     # register task
@@ -69,7 +86,15 @@ module.exports = (grunt) ->
         'coffee'
         'uglify'
     ]
-    grunt.registerTask 'test', ['karma']
+    grunt.registerTask 'test', [
+        'karma'
+        'e2e-test'
+    ]
+
+    grunt.registerTask 'e2e-test', [
+        'connect:test'
+        'protractor:e2e'
+    ]
 
     # -----------------------------------
     # Plugins
@@ -78,5 +103,6 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-connect'
+    grunt.loadNpmTasks 'grunt-protractor-runner'
     grunt.loadNpmTasks 'grunt-karma'
     grunt.loadNpmTasks 'grunt-contrib-uglify'
