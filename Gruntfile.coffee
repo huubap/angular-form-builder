@@ -62,7 +62,7 @@ module.exports = (grunt) ->
 
         protractor:
             options:
-                configFile: 'test/protractor-conf.coffee'
+                configFile: 'test/protractor-conf.js'
                 noColor: false
                 args: {}
             e2e:
