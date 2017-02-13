@@ -348,6 +348,7 @@
             $(element).addClass(popover.id);
             return $(element).popover({
               html: true,
+              trigger: 'manual',
               title: scope.$component.label,
               content: popover.view,
               container: 'body',
