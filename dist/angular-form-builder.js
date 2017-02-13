@@ -320,6 +320,9 @@
           $(element).on('click', function() {
             return false;
           });
+          $(element).on('dblclick', function() {
+              return $(element).popover('toggle');
+          });
           $drag.draggable($(element), {
             object: {
               formObject: scope.formObject

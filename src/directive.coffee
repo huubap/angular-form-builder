@@ -140,6 +140,9 @@ angular.module 'builder.directive', [
 
         # disable click event
         $(element).on 'click', -> no
+        # toggle popover on doubleclick
+        $(element).on 'dblclick', ->
+            $(element).popover 'toggle';
 
         # draggable
         $drag.draggable $(element),
@@ -167,6 +170,7 @@ angular.module 'builder.directive', [
             $(element).addClass popover.id
             $(element).popover
                 html: yes
+                trigger: 'manual'
                 title: scope.$component.label
                 content: popover.view
                 container: 'body'
